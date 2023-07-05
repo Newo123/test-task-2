@@ -1,0 +1,251 @@
+@import 'fonts';
+@import 'functions';
+@import 'mixins.scss';
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: $whiteF;
+  font-family: Outfit;
+}
+
+body {
+  background-color: $bg;
+  overflow-x: hidden;
+}
+
+button {
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+input {
+  outline: none;
+  background: none;
+  border: none;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  max-width: $maxWidthContainer + px;
+  margin: 0 auto;
+  width: 100%;
+  @include adaptive-hero(padding-right, 60, 16);
+  @include adaptive-hero(padding-left, 60, 16);
+}
+
+.button__component {
+  font-size: 20px;
+  font-weight: 600;
+  padding: 16px 30px;
+  border-radius: 16px;
+  background-color: $button-color;
+}
+
+.tabs {
+  background-color: $orange;
+  width: 100%;
+  height: 38px;
+
+  & .active__tabs {
+    background-color: $bg;
+    color: $whiteF;
+  }
+
+  &__list {
+    display: flex;
+    height: 100%;
+    align-items: center;
+
+    @media (max-width: 480px) {
+      padding: 0 !important;
+    }
+  }
+
+  &__item {
+    padding: 0 40px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    color: $black;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+
+// Header
+
+.header {
+  display: flex;
+  align-items: center;
+  height: 71px;
+
+  &__burger {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    width: 24px;
+    position: relative;
+    cursor: pointer;
+
+    @media (max-width: 480px) {
+      display: flex;
+    }
+
+    & span {
+      width: 100%;
+      height: 2px;
+      background-color: $whiteF;
+      border-radius: 8px;
+    }
+
+    &::after {
+      content: '';
+      width: 100%;
+      height: 2px;
+      background-color: $whiteF;
+      border-radius: 8px;
+      position: absolute;
+      bottom: 0;
+    }
+    &::before {
+      content: '';
+      width: 100%;
+      height: 2px;
+      background-color: $whiteF;
+      border-radius: 8px;
+      position: absolute;
+      top: 0;
+    }
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 37px;
+    font-weight: 600;
+    line-height: 17px;
+  }
+
+  &__button {
+    @media (max-width: 480px) {
+      display: none;
+    }
+  }
+}
+
+// HERO
+
+.hero {
+  height: calc(100vh - 109px);
+
+  // @media (max-width: 1440px) {
+  //   @include adaptive-hero(height, 591, 0);
+  // }
+
+  @media (max-width: 768px) {
+    height: 100%;
+  }
+  &__container {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    justify-content: space-between;
+    height: 100%;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__left {
+    @include adaptive-hero(margin-top, 82, 51);
+    @include adaptive-hero(margin-bottom, 140, 124);
+    @include adaptive-hero(margin-left, 50, 0);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  &__title {
+    @include adaptive-hero(font-size, 96, 30);
+    font-weight: 700;
+    line-height: 106%;
+
+    @media (min-width: 1440px) {
+      font-size: 96px;
+    }
+
+    @media (max-width: 768px) {
+      @include adaptive-hero(font-size, 96, 40);
+    }
+  }
+
+  &__description {
+    @include adaptive-hero(font-size, 20, 16);
+    font-weight: 400;
+    line-height: 120%;
+    margin-bottom: 20px;
+    max-width: 534px;
+    @media (min-width: 1440px) {
+      font-size: 20px;
+    }
+  }
+
+  &__button {
+    @media (max-width: 480px) {
+      width: 100%;
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    height: 100%;
+    justify-self: flex-end;
+
+    @media (max-width: 768px) {
+      justify-self: center;
+    }
+
+    & img {
+      object-fit: contain;
+      @include adaptive-hero(width, 600, 250);
+      @include adaptive-hero(height, 550, 300);
+    }
+
+    // &::after {
+    //   content: url('@img/hero_hook.svg');
+    //   position: absolute;
+    //   bottom: 131px;
+    //   right: -57%;
+    //   z-index: -1;
+    //   @include adaptive-hero(width, 711.49, 330.46);
+    //   @include adaptive-hero(height, 333.52, 154.99);
+    // }
+  }
+}

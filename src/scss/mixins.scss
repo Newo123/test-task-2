@@ -1,0 +1,39 @@
+@import 'vars';
+// container нужно передать в переменную который нужен
+// border: calc(1px + (10 - 1) * ((100vw - 320px) / (1200 - 320))) solid;
+
+@mixin adaptive-value($property, $startSize, $minSize, $mode) {
+  $addSize: $startSize - $minSize;
+  @if $mode == 1 {
+    // Только если меньше контейнера
+    #{$property}: $startSize + px;
+    @media (max-width: #{$maxWidthContainer + px}) {
+      #{$property}: calc(
+        #{$minSize + px} + #{$addSize} *
+          ((100vw - 360px) / #{$maxWidthContainer - 360})
+      );
+    }
+  } @else if $mode == 2 {
+    // Только если больше контейнера
+    #{$property}: $startSize + px;
+    @media (max-width: #{$maxWidthContainer + px}) {
+      #{$property}: calc(
+        #{$minSize + px} + #{$addSize} * ((100vw - 360px) / #{$maxWidth - 360})
+      );
+    }
+  } @else {
+    // Всегда
+    #{$property}: calc(
+      #{$minSize + px} + #{$addSize} * ((100vw - 360px) / #{$maxWidth - 360})
+    );
+  }
+}
+
+// height: calc(260px + (900 - 260) * ((100vw - 360px) / (1920 - 360)));
+
+@mixin adaptive-hero($property, $startSize, $minSize) {
+  $addSize: $startSize - $minSize;
+  #{$property}: calc(
+    #{$minSize + px} + #{$addSize} * ((100vw - 375px) / #{$maxWidth - 375})
+  );
+}
