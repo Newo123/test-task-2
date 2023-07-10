@@ -1,18 +1,35 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 @@include('./html/head.html', {
 "title": "budss"
 })
 
 <body>
+  @@include('./html/modal-form.html')
+  @@include('./html/super.html')
+
+  @@include('./html/mobile-menu.html')
   @@include('./html/linkTabs.html')
   @@include('./html/header.html')
-
-  @@include('./html/hero.html')
-
+  <main>
+    @@include('./html/hero.html')
+    @@include('./html/about.html')
+    @@include('./html/how.html')
+    @@include('./html/advantages.html')
+    @@include('./html/why.html')
+    @@include('./html/business.html')
+    @@include('./html/brand.html')
+    @@include('./html/clients.html')
+    @@include('./html/cookies.html')
+  </main>
   @@include('./html/footer.html')
 
+  @@include('./html/shadow.html')
+
+
+  <script src="https://unpkg.com/imask"></script>
   <script src="js/app.min.js"></script>
+
 </body>
 
 </html>
